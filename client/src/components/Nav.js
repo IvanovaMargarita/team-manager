@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React ,{useState, useEffect}from 'react'
 import { Link } from 'react-router-dom'
 
@@ -20,6 +21,16 @@ const Nav = (props) => {
             setManagePlayerTabStyle(styleObjBold)
         }
     },[managePlayerStatus])
+
+    const logout = (e) =>{
+        axios.get('http://localhost:8000/api/logout',
+            {withCredentials:true})
+        .then((res)=>{
+            console.log('logged out')
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
   return (
     <div>
         <span style={managePlayerTabStyle}
@@ -30,7 +41,7 @@ const Nav = (props) => {
         <span style={statusTabsStyle}
             className='global-nav-text'>
         <Link to="/status/game/1"> Manage Player Status</Link>
-
+        <button onClick={logout}>Logout</button>
         </span>
     </div>
   )

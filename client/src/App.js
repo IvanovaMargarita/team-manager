@@ -6,6 +6,8 @@ import AllPlayers from './components/AllPlayers';
 import { useState } from 'react';
 import PLayerStatus from './components/PLayerStatus';
 import Nav from './components/Nav';
+import RegisterForm from './components/RegisterForm';
+import Login from './components/Login';
 function App() {
   //lifted state and passed the setter function to all three components and then we manualy set the status
   const [managePlayerStatus,setManagePlayerStatus]= useState(false)//have to add it into props on app players components
@@ -28,6 +30,8 @@ function App() {
                             setManagePlayerStatus={setManagePlayerStatus}/>} 
                             path ="/players/addplayer"/>
         < Route element={<PLayerStatus setManagePlayerStatus={setManagePlayerStatus} />} path="/status/game/:gameId" /> 
+        <Route path="/register" element={<RegisterForm/>}/>
+        <Route path="/login" element={<Login/>}/>
       
       </Routes>
       </BrowserRouter>
